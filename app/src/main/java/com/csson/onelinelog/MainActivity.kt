@@ -11,6 +11,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.csson.onelinelog.data.datastore.OneLineLogDataStore
+import com.csson.onelinelog.data.datastore.OneLineLogsDataStore
+import com.csson.onelinelog.data.repository.OneLineLogRepository
 import com.csson.onelinelog.ui.screens.OneLineLogScreen
 import com.csson.onelinelog.ui.theme.OneLineLogTheme
 import com.csson.onelinelog.viewmodel.OneLineLogViewModel
@@ -20,9 +23,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        val viewModel  = OneLineLogViewModel()
-
-
+        val dataStore = OneLineLogDataStore(applicationContext.OneLineLogsDataStore)
+        val repository = OneLineLogRepository(dataStore)
+        val viewModel = OneLineLogViewModel(repository)
 
         setContent {
             OneLineLogTheme {

@@ -2,6 +2,7 @@ package com.csson.onelinelog.ui.componets
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -20,7 +21,7 @@ fun OneLineLogContent(
 ) {
     Column(modifier = modifier.padding(16.dp)) {
         Text("Hello, OneLineLog App / ${LocalDate.now()}")
-        Text("현재 입력된 일기 : ${state.writingText}")
+        Text("현재 입력된 로그 : ${state.writingText}")
 
         TextField(
             value = state.writingText,
@@ -30,11 +31,13 @@ fun OneLineLogContent(
             Text("저장")
         }
 
-        Text("테스트1")
-        Text("테스트1")
-        Text("테스트1")
-        Text("테스트1")
-        Text("테스트1")
+//        Text(text = "저장된 로그 : ${state.storedOneLineLog}")
 
+        LazyColumn {
+            items(state.oneLineLogs.count()) {
+                val oneLineLog = state.oneLineLogs[it]
+                Text("${oneLineLog.content} / ${oneLineLog.createdAt}")
+            }
+        }
     }
 }

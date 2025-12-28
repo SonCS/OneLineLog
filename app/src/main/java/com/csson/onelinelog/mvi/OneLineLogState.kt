@@ -8,5 +8,6 @@ import com.csson.onelinelog.data.model.OneLineLog
 
 data class OneLineLogState(
     val writingText: String = "",
+    val storedOneLineLog: String = "",
     val oneLineLogs: List<OneLineLog> = emptyList()
 )

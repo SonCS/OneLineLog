@@ -14,7 +14,6 @@ import com.csson.onelinelog.viewmodel.OneLineLogViewModel
 @Composable
 fun OneLineLogScreen(viewModel: OneLineLogViewModel, modifier: Modifier) {
     val context = LocalContext.current
-
     val state by viewModel.state.collectAsState()
 
     // SideEffect 구독
